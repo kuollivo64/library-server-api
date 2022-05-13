@@ -1,12 +1,5 @@
 //const faker = require("faker");
 const boom = require("@hapi/boom");
-
-const {
-  createLeanSchema,
-  updateLeantSchema,
-  getSLeanSchema,
-} = require("../schemas/students.schema");
-
 class loanService {
   constructor() {
     this.loan = [];
