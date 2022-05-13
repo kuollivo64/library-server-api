@@ -10,17 +10,19 @@ class StudentService {
     const amount = 50;
     for (let index = 0; index < amount; index++) {
       this.students.push({
-        id: faker.datatype.uuid().toString(),
-        name: faker.name.firstName(),
-        age: parseInt(faker.random.number(40)),
-        phone: faker.phone.phoneNumber(),
-        image: faker.image.avatar(),
+        nit_student:faker.datatype.uuid().toString(),
+        password_student:faker.name.firstName(),
+        name_student:faker.name.firstName(),
+        date_of_birth:faker.name.firstName(),
+        college_career:faker.name.firstName(),
+        phone:faker.phone.phoneNumber(),
+        mail:faker.name.firstName()
       });
     }
   }
   async create(data) {
     const newStudent = {
-      id: faker.datatype.uuid(),
+      nit_student: faker.datatype.uuid(),
       ...data,
     };
 
@@ -31,7 +33,7 @@ class StudentService {
     return this.students;
   }
   async findOne(id) {
-    const student = this.students.find((item) => item.id === id);
+    const student = this.students.find((item) => item.nit_student === id);
     // const student = this.getAll();
     if (!student) {
       throw boom.clientTimeout("Student not found FINDONE XD.");
@@ -39,7 +41,7 @@ class StudentService {
     return student;
   }
   async update(id, data) {
-    const index = this.students.findIndex((item) => item.id === id);
+    const index = this.students.findIndex((item) => item.nit_student === id);
     const student = this.students[index];
     if (!student) {
       throw boom.notFound("Student not found UPDATE.");
@@ -54,7 +56,7 @@ class StudentService {
     return this.students[index];
   }
   async delete(id) {
-    const index = this.students.findIndex((item) => item.id === id);
+    const index = this.students.findIndex((item) => item.nit_student === id);
     if (index === -1) {
       throw boom.notFound("Student not found.");
     }

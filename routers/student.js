@@ -12,42 +12,6 @@ const api = express.Router();
 
 const service = new StudentService();
 
-// api.get("/get-student/:id/", (req, res) => {
-//   const id = req.params.id;
-//   res.json({
-//     code: 200,
-//     id,
-//     name: "Alberto Perez",
-//     civilStatus: "Soltero",
-//   });
-// });
-
-// api.get("/get-student/:idStudent/course/:idCourse", (req, res) => {
-//   const idCourse = req.params.idCourse;
-//   const idStudent = req.params.idStudent;
-//   res.json({
-//     code: 200,
-//     idCourse,
-//     idStudent,
-//     name: "Alberto Perez",
-//     civilStatus: "Soltero",
-//   });
-// });
-
-// api.get("/:amount", (req, res) => {
-//   const { amount } = req.query;
-//   const students = [];
-//   for (let index = 0; index < amount; index++) {
-//     students.push({
-//       name: faker.name.firstName(),
-//       age: parseInt(faker.random.number(40)),
-//       phone: faker.phone.phoneNumber(),
-//       image: faker.image.avatar(),
-//     });
-//   }
-//   res.json(students);
-// });
-
 api.get("/", async (req, res, next) => {
   try {
     const students = await service.find();

@@ -1,30 +1,39 @@
-const Joi = require("joi");
+const Joi = require('joi')
 
-const id = Joi.string().uuid();
-const name = Joi.string().min(3).max(30);
-const age = Joi.number().integer().min(5).max(99);
-const phone = Joi.string().min(7).max(14);
-const image = Joi.string().uri();
+const nit_student = Joi.string()
+const password_student = Joi.string()
+const name_student = Joi.string()
+const date_of_birth = Joi.string()
+const college_career = Joi.string()
+const phone = Joi.string()
+const mail = Joi.string()
 
 const createStudentSchema = Joi.object({
-  name: name.required(),
-  age: age.required(),
-  phone: phone.required(),
-});
+    nit_student,
+    password_student,
+    name_student,
+    date_of_birth,
+    college_career,
+    phone,
+    mail
+})
 
 const updateStudentSchema = Joi.object({
-  name,
-  age,
-  phone,
-  image,
-});
+    nit_student,
+    password_student,
+    name_student,
+    date_of_birth,
+    college_career,
+    phone,
+    mail
+})
 
 const getStudentSchema = Joi.object({
-  id: id.required(),
-});
+    nit_student
+})
 
 module.exports = {
-  createStudentSchema,
-  updateStudentSchema,
-  getStudentSchema,
-};
+    createStudentSchema,
+    updateStudentSchema,
+    getStudentSchema
+}
