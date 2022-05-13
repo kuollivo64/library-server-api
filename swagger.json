@@ -1,0 +1,146 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Archivo para la documentación de ejemplo de mi primera API",
+    "version": "1.0.0",
+    "title": "API - Ejemplo",
+    "contact": {
+      "email": "navau@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/univalle/v1",
+  "tags": [
+    {
+      "name": "student",
+      "description": "Acerca de los estudiantes"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/students": {
+      "post": {
+        "tags": [
+          "student"
+        ],
+        "summary": "agrega un nuevo estudiante",
+        "description": "agrega un estudiante",
+        "operationId": "created student",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "student es un objeto requerido",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/student"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Student created"
+          }
+        }
+      }
+    },
+    "/student/{Id}": {
+      "get": {
+        "tags": [
+          "student"
+        ],
+        "summary": "buscar un estudiante por su ID",
+        "description": "retorna un solo estudiante",
+        "operationId": "findone",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "description": "id del studiante",
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "student",
+            "schema": {
+              "$ref": "#/definitions/student"
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "student not found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "student": {
+      "type": "object",
+      "required": [
+        "age",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string",
+          "example": "pepe",
+          "description": "nombre de estudiante"
+        },
+        "lastname": {
+          "type": "string",
+          "example": "canseco",
+          "description": "apellido de estudiante"
+        },
+        "phone": {
+          "type": "string",
+          "example": "32165498"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "example": 18
+        }
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
