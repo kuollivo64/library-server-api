@@ -1,17 +1,19 @@
-const express = require("express")
+const express = require("express");
 
 const student = require("./student");
 const teacher = require("./teacher");
 const course = require("./course");
+const editorial = require("./editorial");
 
 function routerApi(app) {
-    const router = express.Router();
+  const router = express.Router();
 
-    app.use("/univalle/v1", router)
+  app.use("/univalle/v1", router);
 
-    router.use(`/student`, student)
-    router.use(`/teacher`, teacher)
-    router.use(`/course`, course)
+  router.use(`/student`, student);
+  router.use(`/teacher`, teacher);
+  router.use(`/course`, course);
+  router.use(`/editorial`, editorial);
 }
 
 module.exports = routerApi;
